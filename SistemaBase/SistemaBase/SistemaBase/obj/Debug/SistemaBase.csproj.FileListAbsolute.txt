@@ -49,3 +49,4 @@ D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\Sis
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.Properties.Resources.resources
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.csproj.GenerateResource.Cache
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.FrmActualizarStock.resources
+D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.FrmBuscarProductocs.resources

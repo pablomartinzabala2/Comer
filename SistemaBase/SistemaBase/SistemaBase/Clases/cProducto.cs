@@ -41,5 +41,17 @@ namespace SistemaBase.Clases
             sql = sql + " where CodProducto =" + CodProducto.ToString();
             cDb.Grabar(sql);
         }
+
+        public DataTable GetProductoxNombre(string Nombre)
+        {
+            string sql = "select p.CodProducto,p.Nombre,";
+            sql = sql + "p.Precio,p.Stock,p.Codigo ";
+            sql = sql + " from Producto p ";
+            if (Nombre !="")
+            {
+                sql = sql + " where p.Nombre like " + "'%" + Nombre + "%'";
+            }
+            return cDb.GetDatatable(sql);
+        }
     }
 }

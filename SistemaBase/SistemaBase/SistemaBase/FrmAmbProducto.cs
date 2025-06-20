@@ -71,6 +71,8 @@ namespace SistemaBase
                 return;
             }
 
+            txt_Precio.Text = txt_Precio.Text.Replace(".", "");
+
             if (txtCodigo.Text == "")
                 fun.GuardarNuevoGenerico(this, "Producto");
             else
@@ -105,6 +107,10 @@ namespace SistemaBase
                 txtCodigo.Text = Principal.CodigoPrincipalAbm.ToString();
 
                 fun.CargarControles(this, "Producto", "CodProducto", txtCodigo.Text);
+                if (txt_Precio.Text !="")
+                {
+                    txt_Precio.Text = fun.SepararDecimales(txt_Precio.Text);
+                }
 
             }
             Grupo.Enabled = false;

@@ -26,6 +26,7 @@ namespace SistemaBase
         public static string CodigoPrincipalAbm;
         public static Int32 CodUsuarioLogueado;
         public static string NombreUsuarioLogueado;
+        public static Int32 CodProoducto;
         public Principal()
         {
             InitializeComponent();
@@ -41,13 +42,10 @@ namespace SistemaBase
 
         private void OpenFile(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
+            FrmActualizarStock childForm = new FrmActualizarStock();
+            childForm.MdiParent = this;
+            childForm.Text = "Formulario para actualizar stock y precio  ";
+            childForm.Show();
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,6 +117,17 @@ namespace SistemaBase
         private void Principal_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAbmUsuario frm = new FrmAbmUsuario();
+            frm.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

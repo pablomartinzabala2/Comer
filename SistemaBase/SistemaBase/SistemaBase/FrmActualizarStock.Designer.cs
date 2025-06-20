@@ -30,35 +30,39 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmActualizarStock));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCodigoBarra = new System.Windows.Forms.TextBox();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtNuevoPrecio = new System.Windows.Forms.TextBox();
-            this.btnGrabarPrecio = new System.Windows.Forms.Button();
-            this.txtCodProducto = new System.Windows.Forms.TextBox();
-            this.txtStock = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnAbrirArchivo = new System.Windows.Forms.Button();
+            this.btnGuardarStock = new System.Windows.Forms.Button();
             this.txtNuevoStock = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnGuardarStock = new System.Windows.Forms.Button();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCodProducto = new System.Windows.Forms.TextBox();
+            this.cv = new System.Windows.Forms.Button();
+            this.txtNuevoPrecio = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCodigoBarra = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLimpiar);
+            this.groupBox1.Controls.Add(this.btnAbrirArchivo);
             this.groupBox1.Controls.Add(this.btnGuardarStock);
             this.groupBox1.Controls.Add(this.txtNuevoStock);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtStock);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtCodProducto);
-            this.groupBox1.Controls.Add(this.btnGrabarPrecio);
+            this.groupBox1.Controls.Add(this.cv);
             this.groupBox1.Controls.Add(this.txtNuevoPrecio);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -77,22 +81,139 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del producto";
             // 
-            // txtNombre
+            // btnLimpiar
             // 
-            this.txtNombre.Location = new System.Drawing.Point(130, 87);
-            this.txtNombre.Multiline = true;
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(354, 20);
-            this.txtNombre.TabIndex = 4;
+            this.btnLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.Image")));
+            this.btnLimpiar.Location = new System.Drawing.Point(490, 59);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(28, 27);
+            this.btnLimpiar.TabIndex = 23;
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // label1
+            // btnAbrirArchivo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Nombre";
+            this.btnAbrirArchivo.Image = ((System.Drawing.Image)(resources.GetObject("btnAbrirArchivo.Image")));
+            this.btnAbrirArchivo.Location = new System.Drawing.Point(490, 30);
+            this.btnAbrirArchivo.Name = "btnAbrirArchivo";
+            this.btnAbrirArchivo.Size = new System.Drawing.Size(28, 27);
+            this.btnAbrirArchivo.TabIndex = 22;
+            this.btnAbrirArchivo.UseVisualStyleBackColor = true;
+            this.btnAbrirArchivo.Click += new System.EventHandler(this.btnAbrirArchivo_Click);
+            // 
+            // btnGuardarStock
+            // 
+            this.btnGuardarStock.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarStock.Image")));
+            this.btnGuardarStock.Location = new System.Drawing.Point(490, 137);
+            this.btnGuardarStock.Name = "btnGuardarStock";
+            this.btnGuardarStock.Size = new System.Drawing.Size(28, 27);
+            this.btnGuardarStock.TabIndex = 21;
+            this.btnGuardarStock.UseVisualStyleBackColor = true;
+            this.btnGuardarStock.Click += new System.EventHandler(this.btnGuardarStock_Click);
+            // 
+            // txtNuevoStock
+            // 
+            this.txtNuevoStock.Location = new System.Drawing.Point(362, 142);
+            this.txtNuevoStock.Multiline = true;
+            this.txtNuevoStock.Name = "txtNuevoStock";
+            this.txtNuevoStock.Size = new System.Drawing.Size(122, 20);
+            this.txtNuevoStock.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(258, 142);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 17);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Agregar Stock";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(130, 139);
+            this.txtStock.Multiline = true;
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(122, 20);
+            this.txtStock.TabIndex = 18;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 142);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 17);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Stock Actual";
+            // 
+            // txtCodProducto
+            // 
+            this.txtCodProducto.BackColor = System.Drawing.Color.Silver;
+            this.txtCodProducto.Location = new System.Drawing.Point(449, 7);
+            this.txtCodProducto.Multiline = true;
+            this.txtCodProducto.Name = "txtCodProducto";
+            this.txtCodProducto.Size = new System.Drawing.Size(35, 22);
+            this.txtCodProducto.TabIndex = 16;
+            // 
+            // cv
+            // 
+            this.cv.Image = ((System.Drawing.Image)(resources.GetObject("cv.Image")));
+            this.cv.Location = new System.Drawing.Point(490, 108);
+            this.cv.Name = "cv";
+            this.cv.Size = new System.Drawing.Size(28, 27);
+            this.cv.TabIndex = 15;
+            this.cv.UseVisualStyleBackColor = true;
+            this.cv.Click += new System.EventHandler(this.btnGrabarPrecio_Click);
+            // 
+            // txtNuevoPrecio
+            // 
+            this.txtNuevoPrecio.Location = new System.Drawing.Point(362, 116);
+            this.txtNuevoPrecio.Multiline = true;
+            this.txtNuevoPrecio.Name = "txtNuevoPrecio";
+            this.txtNuevoPrecio.Size = new System.Drawing.Size(122, 20);
+            this.txtNuevoPrecio.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(258, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Nuevo Precio";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Código Interno";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(130, 61);
+            this.txtCodigo.Multiline = true;
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(354, 20);
+            this.txtCodigo.TabIndex = 11;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(130, 113);
+            this.txtPrecio.Multiline = true;
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(122, 20);
+            this.txtPrecio.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Precio Actual";
             // 
             // label3
             // 
@@ -112,119 +233,22 @@
             this.txtCodigoBarra.TabIndex = 7;
             this.txtCodigoBarra.TextChanged += new System.EventHandler(this.txtCodigoBarra_TextChanged);
             // 
-            // txtPrecio
+            // txtNombre
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(130, 113);
-            this.txtPrecio.Multiline = true;
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(122, 20);
-            this.txtPrecio.TabIndex = 10;
+            this.txtNombre.Location = new System.Drawing.Point(130, 87);
+            this.txtNombre.Multiline = true;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(354, 20);
+            this.txtNombre.TabIndex = 4;
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Precio Actual";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 61);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Código Interno";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(130, 61);
-            this.txtCodigo.Multiline = true;
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(354, 20);
-            this.txtCodigo.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(258, 113);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Nuevo Precio";
-            // 
-            // txtNuevoPrecio
-            // 
-            this.txtNuevoPrecio.Location = new System.Drawing.Point(362, 116);
-            this.txtNuevoPrecio.Multiline = true;
-            this.txtNuevoPrecio.Name = "txtNuevoPrecio";
-            this.txtNuevoPrecio.Size = new System.Drawing.Size(122, 20);
-            this.txtNuevoPrecio.TabIndex = 14;
-            // 
-            // btnGrabarPrecio
-            // 
-            this.btnGrabarPrecio.Image = ((System.Drawing.Image)(resources.GetObject("btnGrabarPrecio.Image")));
-            this.btnGrabarPrecio.Location = new System.Drawing.Point(490, 108);
-            this.btnGrabarPrecio.Name = "btnGrabarPrecio";
-            this.btnGrabarPrecio.Size = new System.Drawing.Size(28, 27);
-            this.btnGrabarPrecio.TabIndex = 15;
-            this.btnGrabarPrecio.UseVisualStyleBackColor = true;
-            this.btnGrabarPrecio.Click += new System.EventHandler(this.btnGrabarPrecio_Click);
-            // 
-            // txtCodProducto
-            // 
-            this.txtCodProducto.BackColor = System.Drawing.Color.Silver;
-            this.txtCodProducto.Location = new System.Drawing.Point(505, 35);
-            this.txtCodProducto.Multiline = true;
-            this.txtCodProducto.Name = "txtCodProducto";
-            this.txtCodProducto.Size = new System.Drawing.Size(35, 22);
-            this.txtCodProducto.TabIndex = 16;
-            // 
-            // txtStock
-            // 
-            this.txtStock.Location = new System.Drawing.Point(130, 139);
-            this.txtStock.Multiline = true;
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(122, 20);
-            this.txtStock.TabIndex = 18;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 142);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 17);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Stock Actual";
-            // 
-            // txtNuevoStock
-            // 
-            this.txtNuevoStock.Location = new System.Drawing.Point(362, 142);
-            this.txtNuevoStock.Multiline = true;
-            this.txtNuevoStock.Name = "txtNuevoStock";
-            this.txtNuevoStock.Size = new System.Drawing.Size(122, 20);
-            this.txtNuevoStock.TabIndex = 20;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(258, 142);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 17);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Agregar Stock";
-            // 
-            // btnGuardarStock
-            // 
-            this.btnGuardarStock.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarStock.Image")));
-            this.btnGuardarStock.Location = new System.Drawing.Point(490, 137);
-            this.btnGuardarStock.Name = "btnGuardarStock";
-            this.btnGuardarStock.Size = new System.Drawing.Size(28, 27);
-            this.btnGuardarStock.TabIndex = 21;
-            this.btnGuardarStock.UseVisualStyleBackColor = true;
-            this.btnGuardarStock.Click += new System.EventHandler(this.btnGuardarStock_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Nombre";
             // 
             // FrmActualizarStock
             // 
@@ -254,11 +278,13 @@
         private System.Windows.Forms.TextBox txtNuevoPrecio;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCodProducto;
-        private System.Windows.Forms.Button btnGrabarPrecio;
+        private System.Windows.Forms.Button cv;
         private System.Windows.Forms.Button btnGuardarStock;
         private System.Windows.Forms.TextBox txtNuevoStock;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnAbrirArchivo;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

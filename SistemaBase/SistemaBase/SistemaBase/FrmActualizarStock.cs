@@ -20,6 +20,7 @@ namespace SistemaBase
 
         private void txtCodigoBarra_TextChanged(object sender, EventArgs e)
         {
+            cFunciones fun = new cFunciones();
             string Codigo = txtCodigoBarra.Text;
             string Nombre = "";
             cProducto prod = new cProducto();
@@ -34,6 +35,11 @@ namespace SistemaBase
                     txtPrecio.Text = trdo.Rows[0]["Precio"].ToString();
                     txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
                     txtStock.Text = trdo.Rows[0]["stock"].ToString();
+                    if (txtPrecio.Text != "")
+                    {
+                        txtPrecio.Text = fun.SepararDecimales(txtPrecio.Text);
+                        //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
+                    }
                 }
             }
         }
@@ -85,6 +91,7 @@ namespace SistemaBase
 
         private void BuscarProductoxCodigo(Int32 CodProducto)
         {
+            cFunciones fun = new cFunciones();
             cProducto prod = new Clases.cProducto();
             DataTable trdo = prod.GetProductoxCodigo(CodProducto);
             if (trdo.Rows.Count > 0)
@@ -95,9 +102,45 @@ namespace SistemaBase
                     string  Nombre = trdo.Rows[0]["Nombre"].ToString();
                     txtNombre.Text = Nombre;
                     txtPrecio.Text = trdo.Rows[0]["Precio"].ToString();
+                    if (txtPrecio.Text !="")
+                    {
+                        txtPrecio.Text = fun.SepararDecimales(txtPrecio.Text);
+                      //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
+                    }
                     txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
                     txtStock.Text = trdo.Rows[0]["stock"].ToString();
+                    txtCodigoBarra.Text = trdo.Rows[0]["CodigoBarra"].ToString();
                 }
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCodProducto.Text = "";
+            txtNombre.Text = "";
+            txtCodigoBarra.Text = "";
+            txtStock.Text = "";
+            txtNuevoStock.Text = "";
+            txtPrecio.Text = "";
+            txtNuevoStock.Text = "";
+            txtCodigo.Text = "";
+            txtCodigoBarra.Focus ();
+        }
+
+        private void btnAbrirArchivo_Click(object sender, EventArgs e)
+        {
+            Principal.CodProoducto = 0;
+            FrmBuscarProductocs frm = new SistemaBase.FrmBuscarProductocs();
+            frm.FormClosing += new FormClosingEventHandler(Continuar);
+            frm.ShowDialog();
+        }
+
+        private void Continuar(object sender, FormClosingEventArgs e)
+        {
+            if (Principal.CodProoducto !=0)
+            {
+                Int32 CodProducto = Convert.ToInt32(Principal.CodProoducto);
+                BuscarProductoxCodigo(CodProducto);
             }
         }
     }
