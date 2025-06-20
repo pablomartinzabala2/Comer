@@ -53,6 +53,7 @@
     <Compile Include="Clases\cDb.cs" />
     <Compile Include="Clases\cFunciones.cs" />
     <Compile Include="Clases\Class1.cs" />
+    <Compile Include="Clases\cProducto.cs" />
     <Compile Include="Clases\cUsuario.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -71,6 +72,12 @@
     </Compile>
     <Compile Include="FrmAbmUsuario.Designer.cs">
       <DependentUpon>FrmAbmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmActualizarStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActualizarStock.Designer.cs">
+      <DependentUpon>FrmActualizarStock.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAltaBasicacs.cs">
       <SubType>Form</SubType>
@@ -119,6 +126,9 @@
     <EmbeddedResource Include="FrmAbmUsuario.resx">
       <DependentUpon>FrmAbmUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmActualizarStock.resx">
+      <DependentUpon>FrmActualizarStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaBasicacs.resx">
       <DependentUpon>FrmAltaBasicacs.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +173,7 @@
     <Content Include="Iconos\add.ico" />
     <Content Include="Iconos\cancel.ico" />
     <Content Include="Iconos\CodigoBarra.jpg" />
+    <Content Include="Iconos\disk.ico" />
     <Content Include="Iconos\filenew.ico" />
     <Content Include="Iconos\Folder.ico" />
     <Content Include="Iconos\FOLDER100.ico" />

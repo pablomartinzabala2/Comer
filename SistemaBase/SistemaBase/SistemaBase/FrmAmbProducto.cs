@@ -88,8 +88,8 @@ namespace SistemaBase
         private void btnAbrir_Click(object sender, EventArgs e)
         {
             Principal.OpcionesdeBusqueda = "Nombre";
-            Principal.TablaPrincipal = "Usuario";
-            Principal.OpcionesColumnasGrilla = "CodUsuario;Nombre";
+            Principal.TablaPrincipal = "Producto";
+            Principal.OpcionesColumnasGrilla = "CodProducto;Nombre";
             Principal.ColumnasVisibles = "0;1";
             Principal.ColumnasAncho = "0;580";
             FrmBuscadorGenerico form = new FrmBuscadorGenerico();

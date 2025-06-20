@@ -33,7 +33,7 @@ namespace SistemaBase
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            Form childForm = new Form();
+            FrmAmbProducto childForm = new FrmAmbProducto();
             childForm.MdiParent = this;
             childForm.Text = "Window " + childFormNumber++;
             childForm.Show();

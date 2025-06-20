@@ -39,17 +39,17 @@
             this.btnIGregarColor = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.Grupo = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_Stock = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_Codigo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_CodigoBarra = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Precio = new System.Windows.Forms.TextBox();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_Stock = new System.Windows.Forms.TextBox();
             this.BarraBotones.SuspendLayout();
             this.Grupo.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             this.btnSalir});
             this.BarraBotones.Location = new System.Drawing.Point(0, 0);
             this.BarraBotones.Name = "BarraBotones";
-            this.BarraBotones.Size = new System.Drawing.Size(618, 39);
+            this.BarraBotones.Size = new System.Drawing.Size(508, 39);
             this.BarraBotones.TabIndex = 19;
             this.BarraBotones.Text = "toolStrip1";
             // 
@@ -160,7 +160,7 @@
             this.Grupo.Controls.Add(this.label4);
             this.Grupo.Controls.Add(this.txt_Codigo);
             this.Grupo.Controls.Add(this.label3);
-            this.Grupo.Controls.Add(this.textBox1);
+            this.Grupo.Controls.Add(this.txt_CodigoBarra);
             this.Grupo.Controls.Add(this.label2);
             this.Grupo.Controls.Add(this.txt_Precio);
             this.Grupo.Controls.Add(this.txt_Nombre);
@@ -173,6 +173,23 @@
             this.Grupo.TabIndex = 23;
             this.Grupo.TabStop = false;
             this.Grupo.Text = "Producto";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 145);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Stock";
+            // 
+            // txt_Stock
+            // 
+            this.txt_Stock.Location = new System.Drawing.Point(141, 145);
+            this.txt_Stock.Multiline = true;
+            this.txt_Stock.Name = "txt_Stock";
+            this.txt_Stock.Size = new System.Drawing.Size(315, 20);
+            this.txt_Stock.TabIndex = 9;
             // 
             // label4
             // 
@@ -200,13 +217,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Código de Barras";
             // 
-            // textBox1
+            // txt_CodigoBarra
             // 
-            this.textBox1.Location = new System.Drawing.Point(141, 93);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(315, 20);
-            this.textBox1.TabIndex = 5;
+            this.txt_CodigoBarra.Location = new System.Drawing.Point(141, 93);
+            this.txt_CodigoBarra.Multiline = true;
+            this.txt_CodigoBarra.Name = "txt_CodigoBarra";
+            this.txt_CodigoBarra.Size = new System.Drawing.Size(315, 20);
+            this.txt_CodigoBarra.TabIndex = 5;
             // 
             // label2
             // 
@@ -244,35 +261,18 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(236, 12);
+            this.txtCodigo.Location = new System.Drawing.Point(141, 12);
             this.txtCodigo.Multiline = true;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(56, 20);
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.Visible = false;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Stock";
-            // 
-            // txt_Stock
-            // 
-            this.txt_Stock.Location = new System.Drawing.Point(141, 145);
-            this.txt_Stock.Multiline = true;
-            this.txt_Stock.Name = "txt_Stock";
-            this.txt_Stock.Size = new System.Drawing.Size(315, 20);
-            this.txt_Stock.TabIndex = 9;
-            // 
             // FrmAmbProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 423);
+            this.ClientSize = new System.Drawing.Size(508, 271);
             this.Controls.Add(this.Grupo);
             this.Controls.Add(this.BarraBotones);
             this.Name = "FrmAmbProducto";
@@ -307,7 +307,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_Codigo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_CodigoBarra;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_Stock;
     }
