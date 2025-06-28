@@ -53,12 +53,14 @@
             this.txtStock = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnGrabar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grilla)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGrabar);
             this.groupBox1.Controls.Add(this.daFecha);
             this.groupBox1.Controls.Add(this.txtCodigoBarra);
             this.groupBox1.Controls.Add(this.label13);
@@ -85,7 +87,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 124);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(751, 353);
+            this.groupBox1.Size = new System.Drawing.Size(751, 388);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del artículo";
@@ -286,11 +288,21 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "Descripción";
             // 
+            // btnGrabar
+            // 
+            this.btnGrabar.Location = new System.Drawing.Point(669, 346);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(75, 36);
+            this.btnGrabar.TabIndex = 111;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 489);
+            this.ClientSize = new System.Drawing.Size(768, 524);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmVenta";
             this.Text = "Formulario de venta";
@@ -328,5 +340,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker daFecha;
+        private System.Windows.Forms.Button btnGrabar;
     }
 }

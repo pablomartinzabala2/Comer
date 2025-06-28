@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaBase.Clases;
+using System.Data.SqlClient;
 
 namespace SistemaBase
 {
@@ -157,6 +158,7 @@ namespace SistemaBase
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             Inicialiar();
+            fun.EstiloBotones(btnGrabar);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -181,6 +183,42 @@ namespace SistemaBase
                 Agregar();
                 txtCodigoBarra.Focus(); 
             }
+        }
+
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            int CodUsuario = 1;
+            cFunciones fun = new cFunciones();
+            SqlTransaction Transaccion;
+            SqlConnection con = new SqlConnection(cConexion.GetConexion());
+            con.Open();
+            Transaccion = con.BeginTransaction();
+            
+            Int32 CodVenta = 0;
+            DateTime Fecha = daFecha.Value;
+            cVenta venta = new Clases.cVenta();
+            Double Total = 0;
+            if(txtTotal.Text !="")
+            {
+                Total = fun.ToDouble (txtTotal.Text);
+                
+            }
+            try
+            {
+                CodVenta = venta.InsertarVenta(con, Transaccion, Total, Fecha, CodUsuario);
+                Transaccion.Commit();
+                con.Close();
+                Mensaje("Datos grabados correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error en el proceso ");
+                MessageBox.Show(ex.Message.ToString());
+                Transaccion.Rollback();
+                con.Close();
+
+            }
+
         }
     }
 }

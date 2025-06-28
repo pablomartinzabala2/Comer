@@ -51,10 +51,12 @@
   <ItemGroup>
     <Compile Include="Clases\cConexion.cs" />
     <Compile Include="Clases\cDb.cs" />
+    <Compile Include="Clases\cDetalleVentacs.cs" />
     <Compile Include="Clases\cFunciones.cs" />
     <Compile Include="Clases\Class1.cs" />
     <Compile Include="Clases\cProducto.cs" />
     <Compile Include="Clases\cUsuario.cs" />
+    <Compile Include="Clases\cVenta.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
