@@ -26,5 +26,16 @@ namespace SistemaBase.Clases
                 user = trdo.Rows[0]["Nombre"].ToString();
             return user;
         }
+
+        public string GetNombreUsuarioxNombre(string Nombre)
+        {
+            string user = "";
+            string sql = "select * from Usuario";
+            sql = sql + " where Nombre=" + "'" + Nombre + "'";
+            DataTable trdo = cDb.GetDatatable(sql);
+            if (trdo.Rows.Count > 0)
+                user = trdo.Rows[0]["Nombre"].ToString();
+            return user;
+        }
     }
 }

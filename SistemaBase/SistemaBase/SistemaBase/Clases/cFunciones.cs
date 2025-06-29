@@ -267,7 +267,7 @@ namespace SistemaBase.Clases
                     Col = tabla.Columns[j].ColumnName;
                     if (Col == Columna)
                     {
-                        Valor = FormatoEnteroMiles(ParteEntera(Valor));
+                       // Valor = FormatoEnteroMiles(ParteEntera(Valor));
                         if (Valor.Length > 10)
                             Valor = Valor.Substring(0, 10);
                     }

@@ -129,5 +129,11 @@ namespace SistemaBase
         {
             this.Close();
         }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVenta frm = new SistemaBase.FrmVenta();
+            frm.Show();
+        }
     }
 }

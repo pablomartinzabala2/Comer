@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace SistemaBase.Clases
 {
@@ -53,5 +54,32 @@ namespace SistemaBase.Clases
             }
             return cDb.GetDatatable(sql);
         }
+
+        public DataTable GetProductoxCodIGOInterno(string Codigo)
+        {
+            string sql = " select * from Producto ";
+            sql = sql + " where Codigo=" + "'" + Codigo + "'";
+            DataTable trdo = cDb.GetDatatable(sql);
+            return trdo;
+        }
+
+        public void ActualizarStockTransaccion(SqlConnection con, SqlTransaction Transaccion, int CodProducto, int Cantidad)
+        {
+            string sql = "";
+            sql = "update Producto ";
+            sql = sql + " set Stock = isnull(stock,0) - " + Cantidad.ToString();
+            sql = sql + " where CodProducto =" + CodProducto.ToString();
+            cDb.EjecutarNonQueryTransaccion(con, Transaccion, sql);
+        }
+
+        public void ActualizarStockTransaccionSuma(SqlConnection con, SqlTransaction Transaccion, int CodProducto, int Cantidad)
+        {
+            string sql = "";
+            sql = "update Producto ";
+            sql = sql + " set Stock = isnull(stock,0) + " + Cantidad.ToString();
+            sql = sql + " where CodProducto =" + CodProducto.ToString();
+            cDb.EjecutarNonQueryTransaccion(con, Transaccion, sql);
+        }
+
     }
 }

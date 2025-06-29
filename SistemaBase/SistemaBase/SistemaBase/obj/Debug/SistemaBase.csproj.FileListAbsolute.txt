@@ -51,3 +51,4 @@ D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\Sis
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.FrmActualizarStock.resources
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.FrmBuscarProductocs.resources
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.FrmVenta.resources
+D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.FrmAnularVenta.resources

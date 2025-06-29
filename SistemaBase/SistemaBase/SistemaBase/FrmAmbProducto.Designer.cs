@@ -39,12 +39,12 @@
             this.btnIGregarColor = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.Grupo = new System.Windows.Forms.GroupBox();
+            this.txt_CodigoBarra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_Stock = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_Codigo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_CodigoBarra = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Precio = new System.Windows.Forms.TextBox();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
@@ -155,12 +155,12 @@
             // 
             // Grupo
             // 
+            this.Grupo.Controls.Add(this.txt_CodigoBarra);
             this.Grupo.Controls.Add(this.label5);
             this.Grupo.Controls.Add(this.txt_Stock);
             this.Grupo.Controls.Add(this.label4);
             this.Grupo.Controls.Add(this.txt_Codigo);
             this.Grupo.Controls.Add(this.label3);
-            this.Grupo.Controls.Add(this.txt_CodigoBarra);
             this.Grupo.Controls.Add(this.label2);
             this.Grupo.Controls.Add(this.txt_Precio);
             this.Grupo.Controls.Add(this.txt_Nombre);
@@ -173,6 +173,13 @@
             this.Grupo.TabIndex = 23;
             this.Grupo.TabStop = false;
             this.Grupo.Text = "Producto";
+            // 
+            // txt_CodigoBarra
+            // 
+            this.txt_CodigoBarra.Location = new System.Drawing.Point(141, 93);
+            this.txt_CodigoBarra.Name = "txt_CodigoBarra";
+            this.txt_CodigoBarra.Size = new System.Drawing.Size(315, 23);
+            this.txt_CodigoBarra.TabIndex = 11;
             // 
             // label5
             // 
@@ -216,14 +223,6 @@
             this.label3.Size = new System.Drawing.Size(118, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Código de Barras";
-            // 
-            // txt_CodigoBarra
-            // 
-            this.txt_CodigoBarra.Location = new System.Drawing.Point(141, 93);
-            this.txt_CodigoBarra.Multiline = true;
-            this.txt_CodigoBarra.Name = "txt_CodigoBarra";
-            this.txt_CodigoBarra.Size = new System.Drawing.Size(315, 20);
-            this.txt_CodigoBarra.TabIndex = 5;
             // 
             // label2
             // 
@@ -307,8 +306,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_Codigo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_CodigoBarra;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_Stock;
+        private System.Windows.Forms.TextBox txt_CodigoBarra;
     }
 }

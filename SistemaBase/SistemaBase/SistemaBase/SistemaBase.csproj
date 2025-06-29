@@ -93,6 +93,12 @@
     <Compile Include="FrmAmbProducto.Designer.cs">
       <DependentUpon>FrmAmbProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAnularVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAnularVenta.Designer.cs">
+      <DependentUpon>FrmAnularVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBuscadorGenerico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAmbProducto.resx">
       <DependentUpon>FrmAmbProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAnularVenta.resx">
+      <DependentUpon>FrmAnularVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBuscadorGenerico.resx">
       <DependentUpon>FrmBuscadorGenerico.cs</DependentUpon>

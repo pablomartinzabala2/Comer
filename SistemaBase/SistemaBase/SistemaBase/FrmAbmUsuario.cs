@@ -83,6 +83,12 @@ namespace SistemaBase
                 return;
             }
 
+            if (ValidarUsuario ()==true)
+            {
+                Mensaje("El usuario ya existe, ingrese uno diferente");
+                return;
+            }
+
             if (txtCodigo.Text == "")
                 fun.GuardarNuevoGenerico(this, "Usuario");
             else
@@ -95,6 +101,16 @@ namespace SistemaBase
             MessageBox.Show("Datos grabados correctamente");
             fun.LimpiarGenerico(this);
             Botonera(1);
+        }
+
+        private Boolean ValidarUsuario()
+        {
+            Boolean op = false;
+            cUsuario user = new cUsuario();
+            string Nombre = user.GetNombreUsuarioxNombre(txt_Nombre.Text);
+            if (Nombre != "")
+                op = true;
+            return op;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

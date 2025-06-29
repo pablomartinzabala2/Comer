@@ -15,6 +15,8 @@ namespace SistemaBase
     public partial class FrmVenta : FormBase 
     {
         cFunciones fun;
+        Boolean PuedeAgregarCodigoBarra;
+        Boolean PuedeAgregarCodigoBarra2;
         DataTable tbDetalle;
         public FrmVenta()
         {
@@ -36,7 +38,7 @@ namespace SistemaBase
                     Nombre = trdo.Rows[0]["Nombre"].ToString();
                     txtNombre.Text = Nombre;
                     txtPrecio.Text = trdo.Rows[0]["Precio"].ToString();
-                    txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
+                    //txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
                     txtStock.Text = trdo.Rows[0]["stock"].ToString();
                     if (txtPrecio.Text != "")
                     {
@@ -45,6 +47,7 @@ namespace SistemaBase
                     }
                     txtCantidad.Text = "1";
                     txtCantidad.Focus();
+                    PuedeAgregarCodigoBarra = true;
                 }
             }
         }
@@ -93,13 +96,13 @@ namespace SistemaBase
             val = val + ";" + fun.SepararDecimales (SubTotal.ToString ());
             tbDetalle = fun.AgregarFilas(tbDetalle, val);
             Grilla.DataSource = tbDetalle;
-          //  fun.AnchoColumnas(Grilla, "0;0;30;25;15;15;15");
+            fun.AnchoColumnas(Grilla, "0;40;20;20;20");
             Double Total = fun.TotalizarColumna(tbDetalle, "SubTotal");
             txtTotal.Text = fun.SepararDecimales (Total.ToString());
             Limpiar();
             txtCodigoBarra.Focus();
-           // PuedeAgregarCodigoBarra = false;
-          //  PuedeAgregarCodigoBarra2 = false;
+            PuedeAgregarCodigoBarra = false;
+            PuedeAgregarCodigoBarra2 = false;
         }
 
         private void Limpiar()
@@ -111,6 +114,7 @@ namespace SistemaBase
             txtCodigoBarra.Text = "";
             txtNombre.Text ="";
             txtStock.Text = "";
+            
         }
 
         private void ModificarCantidad(int CodProducto, int Canatidad)
@@ -141,8 +145,7 @@ namespace SistemaBase
         }
 
         private void Inicialiar()
-        {
-            
+        {         
             fun = new cFunciones();
             string Col = "CodProducto;Nombre;Cantidad;Precio;SubTotal";
             tbDetalle = new DataTable();
@@ -158,7 +161,31 @@ namespace SistemaBase
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             Inicialiar();
+            CargarNumeroVenta();
             fun.EstiloBotones(btnGrabar);
+            fun.EstiloBotones(btnCancelar);
+            fun.EstiloBotones(btnAnular);
+            PuedeAgregarCodigoBarra = false;
+            PuedeAgregarCodigoBarra2 = false;
+            BuscarUsuario();
+            
+        }
+
+        private void CargarNumeroVenta()
+        {
+            int CodVenta = 0;
+            cVenta venta = new Clases.cVenta();
+            CodVenta = venta.GetMaxNumeroVenta();
+            CodVenta = CodVenta + 1;
+            lBlNumeroVenta.Text = "Venta Número " + CodVenta.ToString();
+        }
+
+        private void BuscarUsuario()
+        {
+            int CodUsuario = Principal.CodUsuarioLogueado;
+            cUsuario user = new cUsuario();
+            string Nombre = user.GetNombreUsuarioxCodUsuario(CodUsuario);
+            lblUsuario.Text = "Usuario " + Nombre;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -180,14 +207,32 @@ namespace SistemaBase
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                Agregar();
-                txtCodigoBarra.Focus(); 
+                if (PuedeAgregarCodigoBarra == true)
+                {
+                    if (PuedeAgregarCodigoBarra2 ==true)
+                    {
+                        Agregar();
+                        txtCodigoBarra.Focus();
+                    }
+                    else
+                    {
+                        PuedeAgregarCodigoBarra2 = true;
+                    }
+                    
+                    
+                }
+               
             }
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            int CodUsuario = 1;
+            if (tbDetalle.Rows.Count <1)
+            {
+                MessageBox.Show("Debe ingresar una venta para continuar");
+                return;
+            }
+            int CodUsuario =  Principal.CodUsuarioLogueado;
             cFunciones fun = new cFunciones();
             SqlTransaction Transaccion;
             SqlConnection con = new SqlConnection(cConexion.GetConexion());
@@ -206,9 +251,15 @@ namespace SistemaBase
             try
             {
                 CodVenta = venta.InsertarVenta(con, Transaccion, Total, Fecha, CodUsuario);
+                GrabarDetalle(CodVenta, con, Transaccion);
                 Transaccion.Commit();
                 con.Close();
                 Mensaje("Datos grabados correctamente");
+                tbDetalle.Clear();
+                Grilla.DataSource = tbDetalle;
+                Limpiar();
+                CargarNumeroVenta();
+                txtTotal.Text = "";
             }
             catch (Exception ex)
             {
@@ -219,6 +270,137 @@ namespace SistemaBase
 
             }
 
+        }
+
+        private void GrabarDetalle(Int32 CodVenta, SqlConnection con , SqlTransaction tran)
+        {
+            cProducto prod = new cProducto();
+            cDetalleVentacs detalle = new cDetalleVentacs();
+            Int32 CodProducto = 0;
+            Int32 Cantidad = 0;
+            Double Precio = 0;
+            Double Subtotal = 0;
+            for (int i = 0; i < tbDetalle.Rows.Count; i++)
+            {
+                CodProducto = Convert.ToInt32 (tbDetalle.Rows[i]["CodProducto"].ToString());
+                Cantidad = Convert.ToInt32(tbDetalle.Rows[i]["Cantidad"].ToString());
+                Precio = fun.ToDouble(tbDetalle.Rows[i]["Precio"].ToString());
+                Subtotal = fun.ToDouble(tbDetalle.Rows[i]["Subtotal"].ToString());
+                detalle.InsertarDetalle(con, tran, CodVenta, CodProducto, Cantidad, Precio, Subtotal);
+                prod.ActualizarStockTransaccion(con, tran, CodProducto, Cantidad);
+            }
+        }
+
+        private void txtCodigoBarra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            /*
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (PuedeAgregarCodigoBarra == true)
+                {
+                    if (PuedeAgregarCodigoBarra2 == true)
+                    {
+                        Agregar();
+                    }
+                    else
+                    {
+                        PuedeAgregarCodigoBarra2 = true;
+                    }
+                }
+
+                txtCodigo.Focus();
+            }
+            */
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+            cFunciones fun = new cFunciones();
+            string Codigo = txtCodigo.Text;
+            string Nombre = "";
+            cProducto prod = new cProducto();
+            DataTable trdo = prod.GetProductoxCodIGOInterno(Codigo);
+            if (trdo.Rows.Count > 0)
+            {
+                if (trdo.Rows[0]["CodProducto"].ToString() != "")
+                {
+                    txtCodProducto.Text = trdo.Rows[0]["CodProducto"].ToString();
+                    Nombre = trdo.Rows[0]["Nombre"].ToString();
+                    txtNombre.Text = Nombre;
+                    txtPrecio.Text = trdo.Rows[0]["Precio"].ToString();
+                    txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
+                    txtStock.Text = trdo.Rows[0]["stock"].ToString();
+                    if (txtPrecio.Text != "")
+                    {
+                        txtPrecio.Text = fun.SepararDecimales(txtPrecio.Text);
+                        //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
+                    }
+                    txtCantidad.Text = "1";
+                    txtCantidad.Focus();
+                    PuedeAgregarCodigoBarra = true;
+                    PuedeAgregarCodigoBarra2 = true;
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            tbDetalle.Clear();
+            Grilla.DataSource = tbDetalle;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Principal.CodProoducto = 0;
+            FrmBuscarProductocs frm = new SistemaBase.FrmBuscarProductocs();
+            frm.FormClosing += new FormClosingEventHandler(Continuar);
+            frm.ShowDialog();
+        }
+
+        private void Continuar(object sender, FormClosingEventArgs e)
+        {
+            if (Principal.CodProoducto != 0)
+            {
+                Int32 CodProducto = Convert.ToInt32(Principal.CodProoducto);
+                BuscarProductoxCodigo(CodProducto);
+            }
+        }
+
+        private void BuscarProductoxCodigo(Int32 CodProducto)
+        {
+            int b = 0;
+            cFunciones fun = new cFunciones();
+            cProducto prod = new Clases.cProducto();
+            DataTable trdo = prod.GetProductoxCodigo(CodProducto);
+            if (trdo.Rows.Count > 0)
+            {
+                if (trdo.Rows[0]["CodProducto"].ToString() != "")
+                {
+                    b = 1;
+                    txtCodProducto.Text = trdo.Rows[0]["CodProducto"].ToString();
+                    string Nombre = trdo.Rows[0]["Nombre"].ToString();
+                    txtNombre.Text = Nombre;
+                    txtPrecio.Text = trdo.Rows[0]["Precio"].ToString();
+                    if (txtPrecio.Text != "")
+                    {
+                        txtPrecio.Text = fun.SepararDecimales(txtPrecio.Text);
+                        //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
+                    }
+                    txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
+                    txtStock.Text = trdo.Rows[0]["stock"].ToString();
+                    // txtCodigoBarra.Text = trdo.Rows[0]["CodigoBarra"].ToString();
+                    
+                }
+            }
+            if (b == 1)
+                txtCantidad.Focus();
+        }
+
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            FrmAnularVenta frm = new SistemaBase.FrmAnularVenta();
+            frm.ShowDialog();
         }
     }
 }
