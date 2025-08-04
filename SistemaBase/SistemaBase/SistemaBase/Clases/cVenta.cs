@@ -37,7 +37,7 @@ namespace SistemaBase.Clases
             return CodVenta;
         }
 
-        public DataTable GetVentasxFecha(DateTime FechaDesde, DateTime FechaHasta)
+        public DataTable GetVentasxFecha(DateTime FechaDesde, DateTime FechaHasta, Int32? CodUsuario)
         {
             string sql = "select v.CodVenta, v.Fecha,";
             sql = sql + "(select nombre from usuario where codusuario = v.CodUsuario) as Usuario ";
@@ -45,8 +45,32 @@ namespace SistemaBase.Clases
             sql = sql + " from Venta v ";
             sql = sql + " where v.Fecha >=" + "'" + FechaDesde.ToShortDateString() + "'";
             sql = sql + " and v.Fecha <=" + "'" + FechaHasta.ToShortDateString() + "'";
+            if (CodUsuario !=null)
+            {
+                sql = sql + " and CodUsuario =" + CodUsuario.ToString();
+            }
             sql = sql + " order by v.CodVenta desc ";
             return cDb.GetDatatable(sql);
         }
+
+        public DataTable GetVentaResumida(DateTime FechaDesde, DateTime FechaHasta, Int32? CodUsuario)
+        {
+            string sql = ""; //"select v.CodVenta, v.Fecha,";
+            sql = sql + "select u.Nombre ";
+            sql = sql + ",sum(v.Total) ";
+            sql = sql + " from Venta v , usuario u ";
+            sql = sql + " where v.CodUsuario = u.CodUsuario ";
+            sql = sql + " and v.Fecha >=" + "'" + FechaDesde.ToShortDateString() + "'";
+            sql = sql + " and v.Fecha <=" + "'" + FechaHasta.ToShortDateString() + "'";
+            if (CodUsuario != null)
+            {
+                sql = sql + " and CodUsuario =" + CodUsuario.ToString();
+            }
+            sql = sql + " group by u.Nombre ";
+            
+            return cDb.GetDatatable(sql);
+        }
+
+
     }
 }

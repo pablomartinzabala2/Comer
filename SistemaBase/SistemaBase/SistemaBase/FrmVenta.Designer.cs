@@ -191,9 +191,10 @@
             // 
             // txtTotal
             // 
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(663, 376);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(69, 23);
+            this.txtTotal.Size = new System.Drawing.Size(69, 26);
             this.txtTotal.TabIndex = 94;
             // 
             // btnEliminar

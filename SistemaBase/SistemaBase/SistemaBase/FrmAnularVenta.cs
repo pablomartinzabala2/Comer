@@ -30,7 +30,7 @@ namespace SistemaBase
             DateTime FechaDesde = daFechaDesde.Value;
             DateTime FechaHasta = daFechaDesde.Value;
             cVenta venta = new Clases.cVenta();
-            DataTable trdo = venta.GetVentasxFecha(FechaDesde, FechaHasta);
+            DataTable trdo = venta.GetVentasxFecha(FechaDesde, FechaHasta, null);
             trdo = fun.TablaaMiles (trdo, "Total");
             trdo = fun.TablaaFechas(trdo, "Fecha");
             Grilla.DataSource = trdo;

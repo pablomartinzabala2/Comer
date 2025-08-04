@@ -116,7 +116,7 @@ namespace SistemaBase
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            this.BackColor = SystemColors.MenuBar;
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,6 +133,12 @@ namespace SistemaBase
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmVenta frm = new SistemaBase.FrmVenta();
+            frm.Show();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmListadoVentascs frm = new FrmListadoVentascs();
             frm.Show();
         }
     }

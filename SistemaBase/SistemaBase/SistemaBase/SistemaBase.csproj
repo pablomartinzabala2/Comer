@@ -117,11 +117,23 @@
     <Compile Include="FrmImportarExcel.Designer.cs">
       <DependentUpon>FrmImportarExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListadoVentascs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListadoVentascs.Designer.cs">
+      <DependentUpon>FrmListadoVentascs.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmResumen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmResumen.Designer.cs">
+      <DependentUpon>FrmResumen.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmVenta.cs">
       <SubType>Form</SubType>
@@ -167,8 +179,14 @@
     <EmbeddedResource Include="FrmImportarExcel.resx">
       <DependentUpon>FrmImportarExcel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListadoVentascs.resx">
+      <DependentUpon>FrmListadoVentascs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmResumen.resx">
+      <DependentUpon>FrmResumen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVenta.resx">
       <DependentUpon>FrmVenta.cs</DependentUpon>
