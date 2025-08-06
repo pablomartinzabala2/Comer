@@ -57,7 +57,7 @@ namespace SistemaBase.Clases
         {
             string sql = ""; //"select v.CodVenta, v.Fecha,";
             sql = sql + "select u.Nombre ";
-            sql = sql + ",sum(v.Total) ";
+            sql = sql + ",sum(v.Total) as Total ";
             sql = sql + " from Venta v , usuario u ";
             sql = sql + " where v.CodUsuario = u.CodUsuario ";
             sql = sql + " and v.Fecha >=" + "'" + FechaDesde.ToShortDateString() + "'";
