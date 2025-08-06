@@ -64,7 +64,7 @@ namespace SistemaBase.Clases
             sql = sql + " and v.Fecha <=" + "'" + FechaHasta.ToShortDateString() + "'";
             if (CodUsuario != null)
             {
-                sql = sql + " and CodUsuario =" + CodUsuario.ToString();
+                sql = sql + " and u.CodUsuario =" + CodUsuario.ToString();
             }
             sql = sql + " group by u.Nombre ";
             

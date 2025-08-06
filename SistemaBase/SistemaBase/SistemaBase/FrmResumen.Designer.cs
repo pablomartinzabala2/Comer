@@ -32,30 +32,24 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbUsuario = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnAnular = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.Grilla = new System.Windows.Forms.DataGridView();
             this.daFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.daFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grilla)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbUsuario);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtCantidad);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.btnAnular);
+            this.groupBox1.Controls.Add(this.cmbUsuario);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.btnBuscar);
             this.groupBox1.Controls.Add(this.Grilla);
             this.groupBox1.Controls.Add(this.daFechaHasta);
@@ -65,7 +59,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(2, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(664, 472);
+            this.groupBox1.Size = new System.Drawing.Size(664, 502);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resumen de Ventas";
@@ -76,7 +70,7 @@
             this.cmbUsuario.FormattingEnabled = true;
             this.cmbUsuario.Location = new System.Drawing.Point(411, 30);
             this.cmbUsuario.Name = "cmbUsuario";
-            this.cmbUsuario.Size = new System.Drawing.Size(150, 24);
+            this.cmbUsuario.Size = new System.Drawing.Size(196, 24);
             this.cmbUsuario.TabIndex = 125;
             // 
             // label5
@@ -88,53 +82,10 @@
             this.label5.TabIndex = 124;
             this.label5.Text = "Usuario";
             // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Location = new System.Drawing.Point(400, 431);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.ReadOnly = true;
-            this.txtCantidad.Size = new System.Drawing.Size(100, 23);
-            this.txtCantidad.TabIndex = 123;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(330, 431);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 122;
-            this.label4.Text = "Cantidad";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Location = new System.Drawing.Point(552, 434);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(100, 23);
-            this.txtTotal.TabIndex = 121;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(506, 434);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 17);
-            this.label3.TabIndex = 120;
-            this.label3.Text = "Total";
-            // 
-            // btnAnular
-            // 
-            this.btnAnular.Image = ((System.Drawing.Image)(resources.GetObject("btnAnular.Image")));
-            this.btnAnular.Location = new System.Drawing.Point(613, 24);
-            this.btnAnular.Name = "btnAnular";
-            this.btnAnular.Size = new System.Drawing.Size(40, 28);
-            this.btnAnular.TabIndex = 119;
-            this.btnAnular.UseVisualStyleBackColor = true;
-            // 
             // btnBuscar
             // 
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(567, 22);
+            this.btnBuscar.Location = new System.Drawing.Point(613, 26);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(40, 28);
             this.btnBuscar.TabIndex = 118;
@@ -147,7 +98,7 @@
             this.Grilla.Location = new System.Drawing.Point(17, 58);
             this.Grilla.Name = "Grilla";
             this.Grilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Grilla.Size = new System.Drawing.Size(636, 361);
+            this.Grilla.Size = new System.Drawing.Size(636, 405);
             this.Grilla.TabIndex = 117;
             // 
             // daFechaHasta
@@ -184,11 +135,28 @@
             this.label1.TabIndex = 113;
             this.label1.Text = "Fecha";
             // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(553, 473);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(100, 23);
+            this.txtTotal.TabIndex = 127;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(507, 473);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 17);
+            this.label3.TabIndex = 126;
+            this.label3.Text = "Total";
+            // 
             // FrmResumen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 481);
+            this.ClientSize = new System.Drawing.Size(676, 520);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmResumen";
             this.Text = "FrmResumen";
@@ -205,16 +173,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbUsuario;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAnular;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView Grilla;
         private System.Windows.Forms.DateTimePicker daFechaHasta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker daFechaDesde;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label3;
     }
 }

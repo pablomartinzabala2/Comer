@@ -20,6 +20,8 @@ namespace SistemaBase
 
         private void FrmResumen_Load(object sender, EventArgs e)
         {
+            cFunciones fun = new cFunciones();
+            fun.LlenarCombo(cmbUsuario, "Usuario", "Nombre", "CodUsuario");
             InicializarFecha();
             Buscar();
         }
@@ -35,11 +37,15 @@ namespace SistemaBase
             {
                 CodUsuario = Convert.ToInt32(cmbUsuario.SelectedValue);
             }
-
+            Double Total = 0;
             DataTable trdo = venta.GetVentaResumida(FechaDesde, FechaHasta, CodUsuario);
+            Total = fun.TotalizarColumna(trdo, "Total");
             trdo = fun.TablaaMiles(trdo, "Total");
             Grilla.DataSource = trdo;
             fun.AnchoColumnas(Grilla, "75;25");
+            txtTotal.Text = fun.SepararDecimales(Total.ToString());
+           
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

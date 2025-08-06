@@ -42,10 +42,8 @@ namespace SistemaBase
 
         private void OpenFile(object sender, EventArgs e)
         {
-            FrmActualizarStock childForm = new FrmActualizarStock();
-            childForm.MdiParent = this;
-            childForm.Text = "Formulario para actualizar stock y precio  ";
-            childForm.Show();
+            FrmListadoVentascs frm = new FrmListadoVentascs();
+            frm.Show();
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,6 +64,8 @@ namespace SistemaBase
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FrmResumen frm = new FrmResumen();
+            frm.Show();
         }
 
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -140,6 +140,14 @@ namespace SistemaBase
         {
             FrmListadoVentascs frm = new FrmListadoVentascs();
             frm.Show();
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            FrmActualizarStock childForm = new FrmActualizarStock();
+            childForm.MdiParent = this;
+            childForm.Text = "Formulario para actualizar stock y precio  ";
+            childForm.Show();
         }
     }
 }
