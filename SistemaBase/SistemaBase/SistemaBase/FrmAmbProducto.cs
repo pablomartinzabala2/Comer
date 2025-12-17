@@ -72,7 +72,10 @@ namespace SistemaBase
             }
 
             txt_Precio.Text = txt_Precio.Text.Replace(".", "");
-
+            if (txt_Costo.Text !="")
+            {
+                txt_Costo.Text = txt_Costo.Text.Replace(".", "");
+            }
             if (txtCodigo.Text == "")
                 fun.GuardarNuevoGenerico(this, "Producto");
             else
@@ -110,6 +113,11 @@ namespace SistemaBase
                 if (txt_Precio.Text !="")
                 {
                     txt_Precio.Text = fun.SepararDecimales(txt_Precio.Text);
+                }
+                 
+                if (txt_Costo.Text != "")
+                {
+                    txt_Costo.Text = fun.SepararDecimales(txt_Costo.Text);
                 }
 
             }

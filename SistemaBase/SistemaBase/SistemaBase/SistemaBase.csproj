@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\cCliente.cs" />
     <Compile Include="Clases\cConexion.cs" />
     <Compile Include="Clases\cDb.cs" />
     <Compile Include="Clases\cDetalleVentacs.cs" />
@@ -98,6 +99,12 @@
     </Compile>
     <Compile Include="FrmAnularVenta.Designer.cs">
       <DependentUpon>FrmAnularVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscadorCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscadorCliente.Designer.cs">
+      <DependentUpon>FrmBuscadorCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmBuscadorGenerico.cs">
       <SubType>Form</SubType>
@@ -169,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAnularVenta.resx">
       <DependentUpon>FrmAnularVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscadorCliente.resx">
+      <DependentUpon>FrmBuscadorCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBuscadorGenerico.resx">
       <DependentUpon>FrmBuscadorGenerico.cs</DependentUpon>

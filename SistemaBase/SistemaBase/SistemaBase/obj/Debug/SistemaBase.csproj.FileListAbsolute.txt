@@ -54,3 +54,4 @@ D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\Sis
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.pdb
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\bin\Debug\SistemaBase.pdb
 D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.csprojResolveAssemblyReference.cache
+D:\PROGRAMACION\COMERCIO\Comer\SistemaBase\SistemaBase\SistemaBase\obj\Debug\SistemaBase.FrmBuscadorCliente.resources

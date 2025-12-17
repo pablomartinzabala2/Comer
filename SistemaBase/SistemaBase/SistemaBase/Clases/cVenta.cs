@@ -9,14 +9,22 @@ namespace SistemaBase.Clases
 {
     public class cVenta
     {
-        public Int32 InsertarVenta(SqlConnection con, SqlTransaction Transaccion, double Total, DateTime Fecha,int CodUsuario)
+        public Int32 InsertarVenta(SqlConnection con, SqlTransaction Transaccion, double Total, DateTime Fecha,int CodUsuario, Int32? CodCli)
         {
             string sql = "insert into Venta(";
-            sql = sql + "Fecha,CodUsuario,Total)";
+            sql = sql + "Fecha,CodUsuario,Total, CodCliente)";
             sql = sql + " values (";
             sql = sql + "'" + Fecha.ToShortDateString() + "'";
             sql = sql + "," + CodUsuario.ToString();
             sql = sql + "," + Total.ToString().Replace(",", ".");
+            if (CodCli !=null)
+            {
+                sql = sql + "," + CodCli.ToString();
+            }
+            else
+            {
+                sql = sql + ",null ";
+            }
             sql = sql + ")";
             return cDb.EjecutarEscalarTransaccion(con, Transaccion, sql);
         }

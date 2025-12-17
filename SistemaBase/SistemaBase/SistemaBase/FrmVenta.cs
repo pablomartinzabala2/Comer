@@ -38,11 +38,18 @@ namespace SistemaBase
                     Nombre = trdo.Rows[0]["Nombre"].ToString();
                     txtNombre.Text = Nombre;
                     txtPrecio.Text = trdo.Rows[0]["Precio"].ToString();
+                    txtCosto.Text = trdo.Rows[0]["Costo"].ToString();
                     //txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
                     txtStock.Text = trdo.Rows[0]["stock"].ToString();
                     if (txtPrecio.Text != "")
                     {
                         txtPrecio.Text = fun.SepararDecimales(txtPrecio.Text);
+                        //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
+                    }
+                    
+                    if (txtCosto.Text != "")
+                    {
+                        txtCosto.Text = fun.SepararDecimales(txtCosto.Text);
                         //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
                     }
                     txtCantidad.Text = "1";
@@ -69,6 +76,7 @@ namespace SistemaBase
             Int32 CodProducto = Convert.ToInt32(txtCodProducto.Text);
             string Nombre = txtNombre.Text;
             string Precio = "0";
+            string Costo = "0";
             string Cantidad = "1";
             Double SubTotal = 0;
             if (txtCantidad.Text != "")
@@ -89,14 +97,20 @@ namespace SistemaBase
             {
                 Precio = txtPrecio.Text;
             }
+
+            if (txtCosto.Text !="")
+            {
+                Costo = txtCosto.Text;
+            }
+
             SubTotal = Convert.ToDouble(Cantidad) * Convert.ToDouble(Precio);
 
             string val = CodProducto + ";"+ Nombre;
-            val = val + ";" + Cantidad + ";" + Precio;
+            val = val + ";" + Cantidad + ";"  + Costo + ";" + Precio;
             val = val + ";" + fun.SepararDecimales (SubTotal.ToString ());
             tbDetalle = fun.AgregarFilas(tbDetalle, val);
             Grilla.DataSource = tbDetalle;
-            fun.AnchoColumnas(Grilla, "0;40;20;20;20");
+            fun.AnchoColumnas(Grilla, "0;40;15;15;15;15");
             Double Total = fun.TotalizarColumna(tbDetalle, "SubTotal");
             txtTotal.Text = fun.SepararDecimales (Total.ToString());
             Limpiar();
@@ -114,6 +128,7 @@ namespace SistemaBase
             txtCodigoBarra.Text = "";
             txtNombre.Text ="";
             txtStock.Text = "";
+            txtCosto.Text = "";
             
         }
 
@@ -147,7 +162,7 @@ namespace SistemaBase
         private void Inicialiar()
         {         
             fun = new cFunciones();
-            string Col = "CodProducto;Nombre;Cantidad;Precio;SubTotal";
+            string Col = "CodProducto;Nombre;Cantidad;Costo;Precio;SubTotal";
             tbDetalle = new DataTable();
             tbDetalle = fun.CrearTabla(Col);
             txtCodigoBarra.Focus();
@@ -168,7 +183,10 @@ namespace SistemaBase
             PuedeAgregarCodigoBarra = false;
             PuedeAgregarCodigoBarra2 = false;
             BuscarUsuario();
-            
+            txtApellido.Enabled = false;
+            txtNombreCliente.Enabled = false;
+            txtNroDoc.Enabled = false;
+
         }
 
         private void CargarNumeroVenta()
@@ -227,6 +245,26 @@ namespace SistemaBase
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
+            if (chkCliente.Checked ==true)
+            {
+                if (txtNroDoc.Text =="")
+                {
+                    MessageBox.Show("Debe ingresar un numero de documento para continuar");
+                    return;
+                }
+
+                if (txtApellido.Text  == "")
+                {
+                    MessageBox.Show("Debe ingresar un apellido para continuar");
+                    return;
+                }
+                  
+                if (txtNombreCliente.Text == "")
+                {
+                    MessageBox.Show("Debe ingresar un nombre para continuar");
+                    return;
+                }
+            }
             if (tbDetalle.Rows.Count <1)
             {
                 MessageBox.Show("Debe ingresar una venta para continuar");
@@ -240,6 +278,9 @@ namespace SistemaBase
             Transaccion = con.BeginTransaction();
             
             Int32 CodVenta = 0;
+            Int32 CodCliente = 0;
+            Int32? CodCli = null;
+            cCliente cli = new cCliente();
             DateTime Fecha = daFecha.Value;
             cVenta venta = new Clases.cVenta();
             Double Total = 0;
@@ -250,7 +291,21 @@ namespace SistemaBase
             }
             try
             {
-                CodVenta = venta.InsertarVenta(con, Transaccion, Total, Fecha, CodUsuario);
+                if (chkCliente.Checked == true)
+                {
+                    if (txtCodCliente.Text =="")
+                    {
+                        CodCliente = cli.InsertarClienteTRan(con, Transaccion, txtNroDoc.Text, txtApellido.Text, txtNombreCliente.Text);
+                        CodCli = Convert.ToInt32(CodCliente);
+                    }
+                    else
+                    {
+                        CodCli = Convert.ToInt32(txtCodCliente.Text);
+                    }
+                   
+                }
+                CodVenta = venta.InsertarVenta(con, Transaccion, Total, Fecha, CodUsuario, CodCli);
+               
                 GrabarDetalle(CodVenta, con, Transaccion);
                 Transaccion.Commit();
                 con.Close();
@@ -260,6 +315,10 @@ namespace SistemaBase
                 Limpiar();
                 CargarNumeroVenta();
                 txtTotal.Text = "";
+                txtApellido.Text = "";
+                txtNombreCliente.Text = "";
+                txtCodCliente.Text = "";
+                txtNroDoc.Text = "";
             }
             catch (Exception ex)
             {
@@ -279,14 +338,17 @@ namespace SistemaBase
             Int32 CodProducto = 0;
             Int32 Cantidad = 0;
             Double Precio = 0;
+            Double Costo = 0;
             Double Subtotal = 0;
             for (int i = 0; i < tbDetalle.Rows.Count; i++)
             {
                 CodProducto = Convert.ToInt32 (tbDetalle.Rows[i]["CodProducto"].ToString());
                 Cantidad = Convert.ToInt32(tbDetalle.Rows[i]["Cantidad"].ToString());
+                Costo = fun.ToDouble(tbDetalle.Rows[i]["Costo"].ToString());
                 Precio = fun.ToDouble(tbDetalle.Rows[i]["Precio"].ToString());
+
                 Subtotal = fun.ToDouble(tbDetalle.Rows[i]["Subtotal"].ToString());
-                detalle.InsertarDetalle(con, tran, CodVenta, CodProducto, Cantidad, Precio, Subtotal);
+                detalle.InsertarDetalle(con, tran, CodVenta, CodProducto, Cantidad, Precio, Subtotal,Costo);
                 prod.ActualizarStockTransaccion(con, tran, CodProducto, Cantidad);
             }
         }
@@ -367,6 +429,26 @@ namespace SistemaBase
             }
         }
 
+        private void ContinuarCliente(object sender, FormClosingEventArgs e)
+        {
+            if (Principal.CodCliente != 0)
+            {
+                Int32 CodCliente = Convert.ToInt32(Principal.CodCliente);
+                cCliente cli = new Clases.cCliente();
+                DataTable trdo = cli.GetClientexCodigo(CodCliente);
+                if (trdo.Rows.Count >0)
+                {
+                    if (trdo.Rows[0]["CodCliente"].ToString ()!="")
+                    {
+                        txtCodCliente.Text = trdo.Rows[0]["CodCliente"].ToString();
+                        txtNombreCliente.Text = trdo.Rows[0]["Nombre"].ToString();
+                        txtApellido.Text = trdo.Rows[0]["Apellido"].ToString();
+                        txtNroDoc.Text = trdo.Rows[0]["NroDoc"].ToString();
+                    }
+                }
+            }
+        }
+
         private void BuscarProductoxCodigo(Int32 CodProducto)
         {
             int b = 0;
@@ -400,6 +482,63 @@ namespace SistemaBase
         private void btnAnular_Click(object sender, EventArgs e)
         {
             FrmAnularVenta frm = new SistemaBase.FrmAnularVenta();
+            frm.ShowDialog();
+        }
+
+        private void chkCliente_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void chkCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCliente.Checked == true)
+            {
+                txtApellido.Enabled = true;
+                txtNombreCliente.Enabled = true;
+                txtNroDoc.Enabled = true;
+            }
+            else
+            {
+                txtApellido.Enabled = false;
+                txtNombreCliente.Enabled = false;
+                txtNroDoc.Enabled = false;
+                txtApellido.Text = "";
+                txtNombreCliente.Text = "";
+                txtNroDoc.Text = "";
+                txtCodCliente.Text = "";
+            }
+        }
+
+        private void txtNroDoc_TextChanged(object sender, EventArgs e)
+        {
+            int b = 0;
+            cCliente cli = new Clases.cCliente();
+            string NroDoc = txtNroDoc.Text;
+            DataTable trdo = cli.GetClientexNroDoc(NroDoc);
+            if (trdo.Rows.Count >0)
+            {
+                if (trdo.Rows[0]["CodCliente"].ToString ()!="")
+                {
+                    b = 1;
+                    txtNombreCliente.Text = trdo.Rows[0]["Nombre"].ToString(); 
+                    txtApellido.Text = trdo.Rows[0]["Apellido"].ToString();
+                    txtCodCliente.Text = trdo.Rows[0]["CodCliente"].ToString();
+                }
+            }
+            if (b ==0)
+            {
+                txtNombreCliente.Text = "";
+                txtApellido.Text = "";
+                txtCodCliente.Text = "";
+            }
+        }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            Principal.CodCliente = 0;
+            FrmBuscadorCliente  frm = new SistemaBase.FrmBuscadorCliente();
+            frm.FormClosing += new FormClosingEventHandler(ContinuarCliente);
             frm.ShowDialog();
         }
     }

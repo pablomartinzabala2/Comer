@@ -35,9 +35,16 @@ namespace SistemaBase
                     txtPrecio.Text = trdo.Rows[0]["Precio"].ToString();
                     txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
                     txtStock.Text = trdo.Rows[0]["stock"].ToString();
+                    txtCostoActual.Text = trdo.Rows[0]["Costo"].ToString();
                     if (txtPrecio.Text != "")
                     {
                         txtPrecio.Text = fun.SepararDecimales(txtPrecio.Text);
+                        //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
+                    }
+                     
+                    if (txtCostoActual.Text != "")
+                    {
+                        txtCostoActual.Text = fun.SepararDecimales(txtCostoActual.Text);
                         //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
                     }
                 }
@@ -142,6 +149,29 @@ namespace SistemaBase
                 Int32 CodProducto = Convert.ToInt32(Principal.CodProoducto);
                 BuscarProductoxCodigo(CodProducto);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtCodProducto.Text == "")
+            {
+                MessageBox.Show("Debe ingresar un producto ");
+                return;
+            }
+            
+            if (txtNuevoCosto.Text == "")
+            {
+                MessageBox.Show("Debe ingresar un nuevo costo ");
+                return;
+            }
+            cFunciones fun = new cFunciones();
+            Int32 CodProducto = Convert.ToInt32(txtCodProducto.Text);
+            Double Costo = 0;
+            Costo = Convert.ToDouble(txtNuevoCosto.Text);
+            cProducto prod = new cProducto();
+            prod.ActualizarCosto  (CodProducto, Costo);
+            MessageBox.Show("Datos guardados correctamente ");
+            txtCostoActual.Text = fun.FormatoEnteroMiles(Costo.ToString());
         }
     }
 }

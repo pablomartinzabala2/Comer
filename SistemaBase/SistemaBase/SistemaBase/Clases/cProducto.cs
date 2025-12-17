@@ -34,6 +34,14 @@ namespace SistemaBase.Clases
             cDb.Grabar(sql);
         }
 
+        public void ActualizarCosto(int CodProducto, Double Costo)
+        {
+            string sql = "update Producto ";
+            sql = sql + " set Costo =" + Costo.ToString().Replace(",", ".");
+            sql = sql + " where CodProducto =" + CodProducto.ToString();
+            cDb.Grabar(sql);
+        }
+
         public void ActualizarStock(int CodProducto ,int Cantidad)
         {
             string sql = "";

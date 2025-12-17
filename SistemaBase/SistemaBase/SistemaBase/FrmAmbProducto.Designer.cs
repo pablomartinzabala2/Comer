@@ -39,6 +39,8 @@
             this.btnIGregarColor = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.Grupo = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_Costo = new System.Windows.Forms.TextBox();
             this.txt_CodigoBarra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_Stock = new System.Windows.Forms.TextBox();
@@ -155,6 +157,8 @@
             // 
             // Grupo
             // 
+            this.Grupo.Controls.Add(this.label6);
+            this.Grupo.Controls.Add(this.txt_Costo);
             this.Grupo.Controls.Add(this.txt_CodigoBarra);
             this.Grupo.Controls.Add(this.label5);
             this.Grupo.Controls.Add(this.txt_Stock);
@@ -173,6 +177,23 @@
             this.Grupo.TabIndex = 23;
             this.Grupo.TabStop = false;
             this.Grupo.Text = "Producto";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Costo";
+            // 
+            // txt_Costo
+            // 
+            this.txt_Costo.Location = new System.Drawing.Point(141, 171);
+            this.txt_Costo.Multiline = true;
+            this.txt_Costo.Name = "txt_Costo";
+            this.txt_Costo.Size = new System.Drawing.Size(315, 20);
+            this.txt_Costo.TabIndex = 12;
             // 
             // txt_CodigoBarra
             // 
@@ -309,5 +330,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_Stock;
         private System.Windows.Forms.TextBox txt_CodigoBarra;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_Costo;
     }
 }

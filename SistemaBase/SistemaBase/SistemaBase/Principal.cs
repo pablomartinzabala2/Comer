@@ -27,6 +27,7 @@ namespace SistemaBase
         public static Int32 CodUsuarioLogueado;
         public static string NombreUsuarioLogueado;
         public static Int32 CodProoducto;
+        public static Int32 CodCliente;
         public Principal()
         {
             InitializeComponent();
@@ -148,6 +149,12 @@ namespace SistemaBase
             childForm.MdiParent = this;
             childForm.Text = "Formulario para actualizar stock y precio  ";
             childForm.Show();
+        }
+
+        private void actualizarStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmActualizarStock frm = new FrmActualizarStock();
+            frm.Show();
         }
     }
 }

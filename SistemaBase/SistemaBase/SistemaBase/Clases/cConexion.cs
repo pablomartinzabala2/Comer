@@ -10,9 +10,12 @@ namespace SistemaBase.Clases
     {
         public static string GetConexion()
         {
-            //string cadena = SistemaFact.Properties.Settings.Default.JOYConnectionString1;
+            //SISTEMA PERFUMES DESKTOP-TRC4UMG
+          //  string cadena = "Data Source=DESKTOP-TRC4UMG;Initial Catalog=SISTEMA;Integrated Security=True;TrustServerCertificate=True;";
+          
+
             //nueva cadena de conexion   
-            string cadena = "Data Source=DESKTOP-PICJCLR\\SQLEXPRESS;Initial Catalog=COMERCIO;Integrated Security=True";
+              string cadena = "Data Source=DESKTOP-PICJCLR\\SQLEXPRESS;Initial Catalog=COMERCIO;Integrated Security=True";
             //DESKTOP-I0OF5F9\SQLEXPRESS
             //string cadena = "Data Source=DESKTOP-I0OF5F9\\SQLEXPRESS;Initial Catalog=JOY;Integrated Security=True";
             return cadena;
