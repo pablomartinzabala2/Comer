@@ -47,6 +47,12 @@ namespace SistemaBase
                         txtCostoActual.Text = fun.SepararDecimales(txtCostoActual.Text);
                         //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
                     }
+
+                    if (trdo.Rows[0]["CodMarca"].ToString() != "")
+                    {
+                        string CodMarca = trdo.Rows[0]["CodMarca"].ToString();
+                        cmbMarca.SelectedValue = CodMarca;
+                    }
                 }
             }
         }
@@ -117,6 +123,11 @@ namespace SistemaBase
                     txtCodigo.Text = trdo.Rows[0]["Codigo"].ToString();
                     txtStock.Text = trdo.Rows[0]["stock"].ToString();
                     txtCodigoBarra.Text = trdo.Rows[0]["CodigoBarra"].ToString();
+                    if (trdo.Rows[0]["CodMarca"].ToString()!="")
+                    {
+                        string CodMarca = trdo.Rows[0]["CodMarca"].ToString();
+                        cmbMarca.SelectedValue = CodMarca;
+                    }
                 }
             }
         }
@@ -172,6 +183,12 @@ namespace SistemaBase
             prod.ActualizarCosto  (CodProducto, Costo);
             MessageBox.Show("Datos guardados correctamente ");
             txtCostoActual.Text = fun.FormatoEnteroMiles(Costo.ToString());
+        }
+
+        private void FrmActualizarStock_Load(object sender, EventArgs e)
+        {
+            cFunciones fun = new Clases.cFunciones();
+            fun.LlenarCombo(cmbMarca, "Marca", "Nombre", "CodMarca");
         }
     }
 }

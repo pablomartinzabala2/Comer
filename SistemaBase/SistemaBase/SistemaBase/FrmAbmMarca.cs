@@ -11,10 +11,9 @@ using SistemaBase.Clases;
 
 namespace SistemaBase
 {
-    public partial class FrmAmbProducto : FormBase 
+    public partial class FrmAbmMarca : FormBase 
     {
-        cFunciones fun;
-        public FrmAmbProducto()
+        public FrmAbmMarca()
         {
             InitializeComponent();
         }
@@ -48,42 +47,35 @@ namespace SistemaBase
                     break;
             }
 
+
         }
 
-        private void FrmAmbProducto_Load(object sender, EventArgs e)
+        private void FrmAbmMarca_Load(object sender, EventArgs e)
         {
+            cFunciones fun = new cFunciones();
             Botonera(1);
             Grupo.Enabled = false;
             fun = new cFunciones();
-            fun.LlenarCombo(cmb_CodMarca, "Marca", "Nombre", "CodMarca");
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            cFunciones fun = new cFunciones();
             if (txt_Nombre.Text == "")
             {
                 Mensaje("Debe ingresar un nombre de usuario continuar");
                 return;
             }
-            
-            if (txt_Precio.Text == "")
-            {
-                Mensaje("Debe ingresar un precio para continuar");
-                return;
-            }
 
-            txt_Precio.Text = txt_Precio.Text.Replace(".", "");
-            if (txt_Costo.Text !="")
-            {
-                txt_Costo.Text = txt_Costo.Text.Replace(".", "");
-            }
+           
+
             if (txtCodigo.Text == "")
-                fun.GuardarNuevoGenerico(this, "Producto");
+                fun.GuardarNuevoGenerico(this, "Marca");
             else
             {
                 // if (txt_Ruta.Text != "")
                 //   txt_Ruta.Text = txt_Ruta.Text.Replace("\\", "\\\\");
-                fun.ModificarGenerico(this, "Producto", "CodProducto", txtCodigo.Text);
+                fun.ModificarGenerico(this, "Marca", "CodMarca", txtCodigo.Text);
 
             }
             MessageBox.Show("Datos grabados correctamente");
@@ -94,8 +86,8 @@ namespace SistemaBase
         private void btnAbrir_Click(object sender, EventArgs e)
         {
             Principal.OpcionesdeBusqueda = "Nombre";
-            Principal.TablaPrincipal = "Producto";
-            Principal.OpcionesColumnasGrilla = "CodProducto;Nombre";
+            Principal.TablaPrincipal = "Marca";
+            Principal.OpcionesColumnasGrilla = "CodMarca;Nombre";
             Principal.ColumnasVisibles = "0;1";
             Principal.ColumnasAncho = "0;580";
             FrmBuscadorGenerico form = new FrmBuscadorGenerico();
@@ -105,31 +97,17 @@ namespace SistemaBase
 
         private void form_FormClosing(object sender, FormClosingEventArgs e)
         {
+            cFunciones fun = new Clases.cFunciones();
             if (Principal.CodigoPrincipalAbm != null)
             {
                 Botonera(3);
                 txtCodigo.Text = Principal.CodigoPrincipalAbm.ToString();
 
-                fun.CargarControles(this, "Producto", "CodProducto", txtCodigo.Text);
-                if (txt_Precio.Text !="")
-                {
-                    txt_Precio.Text = fun.SepararDecimales(txt_Precio.Text);
-                }
-                 
-                if (txt_Costo.Text != "")
-                {
-                    txt_Costo.Text = fun.SepararDecimales(txt_Costo.Text);
-                }
+                fun.CargarControles(this, "Marca", "CodMarca", txtCodigo.Text);
 
             }
             Grupo.Enabled = false;
 
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            Botonera(2);
-            Grupo.Enabled = true;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -139,9 +117,16 @@ namespace SistemaBase
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            cFunciones fun = new Clases.cFunciones();
             Botonera(2);
             Grupo.Enabled = true;
             fun.LimpiarGenerico(this);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Botonera(2);
+            Grupo.Enabled = true;
         }
     }
 }

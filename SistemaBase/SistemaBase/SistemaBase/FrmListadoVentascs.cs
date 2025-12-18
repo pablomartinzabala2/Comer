@@ -20,8 +20,7 @@ namespace SistemaBase
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            
+        {         
             Buscar();
         }
 
@@ -41,9 +40,10 @@ namespace SistemaBase
             Total = fun.TotalizarColumna(trdo, "Total");
             trdo = fun.TablaaMiles(trdo, "Total");
             trdo = fun.TablaaFechas(trdo, "Fecha");
+            trdo = fun.TablaaMiles(trdo, "Ganancia");
             Grilla.DataSource = trdo;
-            fun.AnchoColumnas(Grilla, "20;20;40;20");
-            Grilla.Columns[0].HeaderText = "Nro Venta ";
+            fun.AnchoColumnas(Grilla, "10;20;25;15;15;15");
+            Grilla.Columns[0].HeaderText = "Nro";
             txtTotal.Text = fun.SepararDecimales(Total.ToString());
             txtCantidad.Text = trdo.Rows.Count.ToString();
            

@@ -70,6 +70,12 @@
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAbmMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAbmMarca.Designer.cs">
+      <DependentUpon>FrmAbmMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAbmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAbmMarca.resx">
+      <DependentUpon>FrmAbmMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAbmUsuario.resx">
       <DependentUpon>FrmAbmUsuario.cs</DependentUpon>

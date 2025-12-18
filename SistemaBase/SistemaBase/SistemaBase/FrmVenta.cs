@@ -52,7 +52,15 @@ namespace SistemaBase
                         txtCosto.Text = fun.SepararDecimales(txtCosto.Text);
                         //  txtPrecio.Text = fun.FormatoEnteroMiles(txtPrecio.Text);
                     }
-                    txtCantidad.Text = "1";
+
+                    if (trdo.Rows[0]["CodMarca"].ToString() != "")
+                    {
+                        string CodMarca = trdo.Rows[0]["CodMarca"].ToString();
+                        cmbMarca.SelectedValue = CodMarca;
+                    }
+
+
+                        txtCantidad.Text = "1";
                     txtCantidad.Focus();
                     PuedeAgregarCodigoBarra = true;
                 }
@@ -186,6 +194,8 @@ namespace SistemaBase
             txtApellido.Enabled = false;
             txtNombreCliente.Enabled = false;
             txtNroDoc.Enabled = false;
+           
+            fun.LlenarCombo(cmbMarca, "Marca", "Nombre", "CodMarca");
 
         }
 
@@ -284,6 +294,8 @@ namespace SistemaBase
             DateTime Fecha = daFecha.Value;
             cVenta venta = new Clases.cVenta();
             Double Total = 0;
+            Double Ganancia = 0;
+            Ganancia = CalcularGanancia();
             if(txtTotal.Text !="")
             {
                 Total = fun.ToDouble (txtTotal.Text);
@@ -304,7 +316,7 @@ namespace SistemaBase
                     }
                    
                 }
-                CodVenta = venta.InsertarVenta(con, Transaccion, Total, Fecha, CodUsuario, CodCli);
+                CodVenta = venta.InsertarVenta(con, Transaccion, Total, Fecha, CodUsuario, CodCli , Ganancia);
                
                 GrabarDetalle(CodVenta, con, Transaccion);
                 Transaccion.Commit();
@@ -540,6 +552,31 @@ namespace SistemaBase
             FrmBuscadorCliente  frm = new SistemaBase.FrmBuscadorCliente();
             frm.FormClosing += new FormClosingEventHandler(ContinuarCliente);
             frm.ShowDialog();
+        }
+
+        public Double  CalcularGanancia()
+        {
+            Double Ganancia = 0;
+            Double GananciaTotal = 0;
+            Double Costo = 0;
+            Double Precio = 0;
+            int Cantidad = 0;
+            cFunciones fun = new cFunciones();
+            for (int i = 0; i < tbDetalle.Rows.Count ; i++)
+            {
+                Cantidad = Convert.ToInt32(tbDetalle.Rows[i]["Cantidad"].ToString());
+                Costo = fun.ToDouble(tbDetalle.Rows[i]["Costo"].ToString());
+                Precio = fun.ToDouble(tbDetalle.Rows[i]["Precio"].ToString());
+                Ganancia = Cantidad * (Precio - Costo);
+                GananciaTotal = GananciaTotal + Ganancia;
+            }
+            return GananciaTotal;
+        }
+
+        private void BuscarVenta (Int32 CodVenta)
+        {
+            cVenta venta = new Clases.cVenta();
+           // DataTable trdo = venta.GetVentaxCodigo ()
         }
     }
 }

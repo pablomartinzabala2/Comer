@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVenta));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCosto = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnAnular = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
@@ -68,8 +71,9 @@
             this.txtNroDoc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkCliente = new System.Windows.Forms.CheckBox();
-            this.txtCosto = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmbMarca = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grilla)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -78,6 +82,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbMarca);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtCosto);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnAnular);
@@ -109,6 +115,22 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del artículo";
+            // 
+            // txtCosto
+            // 
+            this.txtCosto.Location = new System.Drawing.Point(394, 83);
+            this.txtCosto.Name = "txtCosto";
+            this.txtCosto.Size = new System.Drawing.Size(79, 23);
+            this.txtCosto.TabIndex = 122;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(344, 86);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 17);
+            this.label8.TabIndex = 121;
+            this.label8.Text = "Costo";
             // 
             // btnAnular
             // 
@@ -142,9 +164,9 @@
             // 
             // txtCodigoBarra
             // 
-            this.txtCodigoBarra.Location = new System.Drawing.Point(347, 28);
+            this.txtCodigoBarra.Location = new System.Drawing.Point(441, 28);
             this.txtCodigoBarra.Name = "txtCodigoBarra";
-            this.txtCodigoBarra.Size = new System.Drawing.Size(191, 23);
+            this.txtCodigoBarra.Size = new System.Drawing.Size(216, 23);
             this.txtCodigoBarra.TabIndex = 11;
             this.txtCodigoBarra.TextChanged += new System.EventHandler(this.txtCodigoBarra_TextChanged);
             this.txtCodigoBarra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarra_KeyPress);
@@ -152,7 +174,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(250, 30);
+            this.label13.Location = new System.Drawing.Point(344, 28);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 17);
             this.label13.TabIndex = 108;
@@ -171,7 +193,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(544, 28);
+            this.btnBuscar.Location = new System.Drawing.Point(663, 28);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(40, 25);
             this.btnBuscar.TabIndex = 104;
@@ -183,13 +205,13 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(115, 54);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(428, 23);
+            this.txtNombre.Size = new System.Drawing.Size(226, 23);
             this.txtNombre.TabIndex = 101;
             // 
             // txtCodProducto
             // 
             this.txtCodProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.txtCodProducto.Location = new System.Drawing.Point(602, 55);
+            this.txtCodProducto.Location = new System.Drawing.Point(668, 54);
             this.txtCodProducto.Name = "txtCodProducto";
             this.txtCodProducto.Size = new System.Drawing.Size(44, 23);
             this.txtCodProducto.TabIndex = 98;
@@ -454,21 +476,28 @@
             this.chkCliente.UseVisualStyleBackColor = true;
             this.chkCliente.CheckedChanged += new System.EventHandler(this.chkCliente_CheckedChanged);
             // 
-            // txtCosto
+            // contextMenuStrip1
             // 
-            this.txtCosto.Location = new System.Drawing.Point(394, 83);
-            this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(79, 23);
-            this.txtCosto.TabIndex = 122;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // label8
+            // cmbMarca
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(344, 86);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 17);
-            this.label8.TabIndex = 121;
-            this.label8.Text = "Costo";
+            this.cmbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMarca.FormattingEnabled = true;
+            this.cmbMarca.Location = new System.Drawing.Point(441, 54);
+            this.cmbMarca.Name = "cmbMarca";
+            this.cmbMarca.Size = new System.Drawing.Size(215, 24);
+            this.cmbMarca.TabIndex = 124;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(347, 57);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 17);
+            this.label11.TabIndex = 123;
+            this.label11.Text = "Marca";
             // 
             // FrmVenta
             // 
@@ -535,5 +564,8 @@
         private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.TextBox txtCosto;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ComboBox cmbMarca;
+        private System.Windows.Forms.Label label11;
     }
 }

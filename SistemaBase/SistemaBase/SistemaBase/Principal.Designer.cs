@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +66,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.actualizarStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -89,6 +90,7 @@
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actualizarStockToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.marcaToolStripMenuItem,
             this.newToolStripMenuItem,
             this.printToolStripMenuItem,
             this.toolStripSeparator5,
@@ -96,7 +98,14 @@
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(60, 20);
-            this.fileMenu.Text = "&Arcgivo";
+            this.fileMenu.Text = "&Archivo";
+            // 
+            // actualizarStockToolStripMenuItem
+            // 
+            this.actualizarStockToolStripMenuItem.Name = "actualizarStockToolStripMenuItem";
+            this.actualizarStockToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.actualizarStockToolStripMenuItem.Text = "Actualizar Stock";
+            this.actualizarStockToolStripMenuItem.Click += new System.EventHandler(this.actualizarStockToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -375,12 +384,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // actualizarStockToolStripMenuItem
+            // marcaToolStripMenuItem
             // 
-            this.actualizarStockToolStripMenuItem.Name = "actualizarStockToolStripMenuItem";
-            this.actualizarStockToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.actualizarStockToolStripMenuItem.Text = "Actualizar Stock";
-            this.actualizarStockToolStripMenuItem.Click += new System.EventHandler(this.actualizarStockToolStripMenuItem_Click);
+            this.marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
+            this.marcaToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.marcaToolStripMenuItem.Text = "Marca";
+            this.marcaToolStripMenuItem.Click += new System.EventHandler(this.marcaToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -446,6 +455,7 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
     }
 }
 

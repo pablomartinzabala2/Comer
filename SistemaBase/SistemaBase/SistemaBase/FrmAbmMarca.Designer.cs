@@ -1,6 +1,6 @@
 ﻿namespace SistemaBase
 {
-    partial class FrmAmbProducto
+    partial class FrmAbmMarca
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAmbProducto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbmMarca));
             this.BarraBotones = new System.Windows.Forms.ToolStrip();
             this.btnNuevo = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
@@ -39,21 +39,9 @@
             this.btnIGregarColor = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.Grupo = new System.Windows.Forms.GroupBox();
-            this.cmb_CodMarca = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txt_Costo = new System.Windows.Forms.TextBox();
-            this.txt_CodigoBarra = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_Stock = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_Codigo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_Precio = new System.Windows.Forms.TextBox();
-            this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.BarraBotones.SuspendLayout();
             this.Grupo.SuspendLayout();
             this.SuspendLayout();
@@ -72,8 +60,8 @@
             this.btnSalir});
             this.BarraBotones.Location = new System.Drawing.Point(0, 0);
             this.BarraBotones.Name = "BarraBotones";
-            this.BarraBotones.Size = new System.Drawing.Size(508, 39);
-            this.BarraBotones.TabIndex = 19;
+            this.BarraBotones.Size = new System.Drawing.Size(403, 39);
+            this.BarraBotones.TabIndex = 24;
             this.BarraBotones.Text = "toolStrip1";
             // 
             // btnNuevo
@@ -159,138 +147,16 @@
             // 
             // Grupo
             // 
-            this.Grupo.Controls.Add(this.cmb_CodMarca);
-            this.Grupo.Controls.Add(this.label7);
-            this.Grupo.Controls.Add(this.label6);
-            this.Grupo.Controls.Add(this.txt_Costo);
-            this.Grupo.Controls.Add(this.txt_CodigoBarra);
-            this.Grupo.Controls.Add(this.label5);
-            this.Grupo.Controls.Add(this.txt_Stock);
-            this.Grupo.Controls.Add(this.label4);
-            this.Grupo.Controls.Add(this.txt_Codigo);
-            this.Grupo.Controls.Add(this.label3);
-            this.Grupo.Controls.Add(this.label2);
-            this.Grupo.Controls.Add(this.txt_Precio);
             this.Grupo.Controls.Add(this.txt_Nombre);
             this.Grupo.Controls.Add(this.label1);
             this.Grupo.Controls.Add(this.txtCodigo);
             this.Grupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Grupo.Location = new System.Drawing.Point(12, 54);
+            this.Grupo.Location = new System.Drawing.Point(12, 43);
             this.Grupo.Name = "Grupo";
-            this.Grupo.Size = new System.Drawing.Size(475, 239);
+            this.Grupo.Size = new System.Drawing.Size(379, 90);
             this.Grupo.TabIndex = 23;
             this.Grupo.TabStop = false;
-            this.Grupo.Text = "Producto";
-            // 
-            // cmb_CodMarca
-            // 
-            this.cmb_CodMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_CodMarca.FormattingEnabled = true;
-            this.cmb_CodMarca.Location = new System.Drawing.Point(141, 202);
-            this.cmb_CodMarca.Name = "cmb_CodMarca";
-            this.cmb_CodMarca.Size = new System.Drawing.Size(315, 24);
-            this.cmb_CodMarca.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 202);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 17);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Marca";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 174);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 17);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Costo";
-            // 
-            // txt_Costo
-            // 
-            this.txt_Costo.Location = new System.Drawing.Point(141, 171);
-            this.txt_Costo.Multiline = true;
-            this.txt_Costo.Name = "txt_Costo";
-            this.txt_Costo.Size = new System.Drawing.Size(315, 20);
-            this.txt_Costo.TabIndex = 12;
-            // 
-            // txt_CodigoBarra
-            // 
-            this.txt_CodigoBarra.Location = new System.Drawing.Point(141, 93);
-            this.txt_CodigoBarra.Name = "txt_CodigoBarra";
-            this.txt_CodigoBarra.Size = new System.Drawing.Size(315, 23);
-            this.txt_CodigoBarra.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Stock";
-            // 
-            // txt_Stock
-            // 
-            this.txt_Stock.Location = new System.Drawing.Point(141, 145);
-            this.txt_Stock.Multiline = true;
-            this.txt_Stock.Name = "txt_Stock";
-            this.txt_Stock.Size = new System.Drawing.Size(315, 20);
-            this.txt_Stock.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 119);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Código Interno";
-            // 
-            // txt_Codigo
-            // 
-            this.txt_Codigo.Location = new System.Drawing.Point(141, 119);
-            this.txt_Codigo.Multiline = true;
-            this.txt_Codigo.Name = "txt_Codigo";
-            this.txt_Codigo.Size = new System.Drawing.Size(315, 20);
-            this.txt_Codigo.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Código de Barras";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Precio";
-            // 
-            // txt_Precio
-            // 
-            this.txt_Precio.Location = new System.Drawing.Point(141, 64);
-            this.txt_Precio.Multiline = true;
-            this.txt_Precio.Name = "txt_Precio";
-            this.txt_Precio.Size = new System.Drawing.Size(315, 20);
-            this.txt_Precio.TabIndex = 3;
-            // 
-            // txt_Nombre
-            // 
-            this.txt_Nombre.Location = new System.Drawing.Point(141, 38);
-            this.txt_Nombre.Multiline = true;
-            this.txt_Nombre.Name = "txt_Nombre";
-            this.txt_Nombre.Size = new System.Drawing.Size(315, 20);
-            this.txt_Nombre.TabIndex = 2;
+            this.Grupo.Text = "Marca";
             // 
             // label1
             // 
@@ -303,23 +169,30 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(141, 12);
+            this.txtCodigo.Location = new System.Drawing.Point(236, 12);
             this.txtCodigo.Multiline = true;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(56, 20);
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.Visible = false;
             // 
-            // FrmAmbProducto
+            // txt_Nombre
+            // 
+            this.txt_Nombre.Location = new System.Drawing.Point(81, 38);
+            this.txt_Nombre.Name = "txt_Nombre";
+            this.txt_Nombre.Size = new System.Drawing.Size(281, 23);
+            this.txt_Nombre.TabIndex = 2;
+            // 
+            // FrmAbmMarca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 323);
-            this.Controls.Add(this.Grupo);
+            this.ClientSize = new System.Drawing.Size(403, 145);
             this.Controls.Add(this.BarraBotones);
-            this.Name = "FrmAmbProducto";
-            this.Text = "FrmAmbProducto";
-            this.Load += new System.EventHandler(this.FrmAmbProducto_Load);
+            this.Controls.Add(this.Grupo);
+            this.Name = "FrmAbmMarca";
+            this.Text = "FrmAbmMarca";
+            this.Load += new System.EventHandler(this.FrmAbmMarca_Load);
             this.BarraBotones.ResumeLayout(false);
             this.BarraBotones.PerformLayout();
             this.Grupo.ResumeLayout(false);
@@ -331,6 +204,9 @@
 
         #endregion
 
+        private System.Windows.Forms.GroupBox Grupo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.ToolStrip BarraBotones;
         private System.Windows.Forms.ToolStripButton btnNuevo;
         private System.Windows.Forms.ToolStripButton btnEditar;
@@ -340,21 +216,6 @@
         private System.Windows.Forms.ToolStripButton btnAbrir;
         private System.Windows.Forms.ToolStripButton btnIGregarColor;
         private System.Windows.Forms.ToolStripButton btnSalir;
-        private System.Windows.Forms.GroupBox Grupo;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_Precio;
         private System.Windows.Forms.TextBox txt_Nombre;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_Codigo;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_Stock;
-        private System.Windows.Forms.TextBox txt_CodigoBarra;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_Costo;
-        private System.Windows.Forms.ComboBox cmb_CodMarca;
-        private System.Windows.Forms.Label label7;
     }
 }

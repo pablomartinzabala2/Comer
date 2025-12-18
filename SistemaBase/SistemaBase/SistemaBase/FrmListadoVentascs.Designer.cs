@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListadoVentascs));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbUsuario = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -41,14 +43,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.daFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbUsuario = new System.Windows.Forms.ComboBox();
+            this.btnAbriVenta = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grilla)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAbriVenta);
             this.groupBox1.Controls.Add(this.cmbUsuario);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtCantidad);
@@ -69,6 +71,24 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Listado de Ventas";
+            // 
+            // cmbUsuario
+            // 
+            this.cmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUsuario.FormattingEnabled = true;
+            this.cmbUsuario.Location = new System.Drawing.Point(411, 30);
+            this.cmbUsuario.Name = "cmbUsuario";
+            this.cmbUsuario.Size = new System.Drawing.Size(204, 24);
+            this.cmbUsuario.TabIndex = 125;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(348, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 17);
+            this.label5.TabIndex = 124;
+            this.label5.Text = "Usuario";
             // 
             // txtCantidad
             // 
@@ -166,23 +186,14 @@
             this.label1.TabIndex = 113;
             this.label1.Text = "Fecha";
             // 
-            // label5
+            // btnAbriVenta
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(348, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 17);
-            this.label5.TabIndex = 124;
-            this.label5.Text = "Usuario";
-            // 
-            // cmbUsuario
-            // 
-            this.cmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUsuario.FormattingEnabled = true;
-            this.cmbUsuario.Location = new System.Drawing.Point(411, 30);
-            this.cmbUsuario.Name = "cmbUsuario";
-            this.cmbUsuario.Size = new System.Drawing.Size(204, 24);
-            this.cmbUsuario.TabIndex = 125;
+            this.btnAbriVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnAbriVenta.Image")));
+            this.btnAbriVenta.Location = new System.Drawing.Point(713, 26);
+            this.btnAbriVenta.Name = "btnAbriVenta";
+            this.btnAbriVenta.Size = new System.Drawing.Size(40, 28);
+            this.btnAbriVenta.TabIndex = 126;
+            this.btnAbriVenta.UseVisualStyleBackColor = true;
             // 
             // FrmListadoVentascs
             // 
@@ -216,5 +227,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbUsuario;
+        private System.Windows.Forms.Button btnAbriVenta;
     }
 }

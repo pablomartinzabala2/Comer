@@ -28,6 +28,7 @@ namespace SistemaBase
         public static string NombreUsuarioLogueado;
         public static Int32 CodProoducto;
         public static Int32 CodCliente;
+        public static Int32 CodVenta;
         public Principal()
         {
             InitializeComponent();
@@ -154,6 +155,12 @@ namespace SistemaBase
         private void actualizarStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmActualizarStock frm = new FrmActualizarStock();
+            frm.Show();
+        }
+
+        private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAbmMarca frm = new FrmAbmMarca();
             frm.Show();
         }
     }

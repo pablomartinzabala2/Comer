@@ -9,10 +9,10 @@ namespace SistemaBase.Clases
 {
     public class cVenta
     {
-        public Int32 InsertarVenta(SqlConnection con, SqlTransaction Transaccion, double Total, DateTime Fecha,int CodUsuario, Int32? CodCli)
+        public Int32 InsertarVenta(SqlConnection con, SqlTransaction Transaccion, double Total, DateTime Fecha,int CodUsuario, Int32? CodCli , Double Ganancia)
         {
             string sql = "insert into Venta(";
-            sql = sql + "Fecha,CodUsuario,Total, CodCliente)";
+            sql = sql + "Fecha,CodUsuario,Total, CodCliente, Ganancia)";
             sql = sql + " values (";
             sql = sql + "'" + Fecha.ToShortDateString() + "'";
             sql = sql + "," + CodUsuario.ToString();
@@ -25,6 +25,7 @@ namespace SistemaBase.Clases
             {
                 sql = sql + ",null ";
             }
+            sql = sql + "," + Ganancia.ToString().Replace(",", ".");
             sql = sql + ")";
             return cDb.EjecutarEscalarTransaccion(con, Transaccion, sql);
         }
@@ -48,8 +49,9 @@ namespace SistemaBase.Clases
         public DataTable GetVentasxFecha(DateTime FechaDesde, DateTime FechaHasta, Int32? CodUsuario)
         {
             string sql = "select v.CodVenta, v.Fecha,";
-            sql = sql + "(select nombre from usuario where codusuario = v.CodUsuario) as Usuario ";
-            sql = sql + ", v.Total ";
+            sql = sql + "(select nombre from usuario where codusuario = v.CodUsuario) as Usuario ,";
+            sql = sql + "(select cli.Nombre + ' ' + cli.Apellido from Cliente cli where cli.CodCliente =v.CodCliente ) as Cliente  ";
+            sql = sql + ", v.Total ,v.Ganancia ";
             sql = sql + " from Venta v ";
             sql = sql + " where v.Fecha >=" + "'" + FechaDesde.ToShortDateString() + "'";
             sql = sql + " and v.Fecha <=" + "'" + FechaHasta.ToShortDateString() + "'";
@@ -76,6 +78,13 @@ namespace SistemaBase.Clases
             }
             sql = sql + " group by u.Nombre ";
             
+            return cDb.GetDatatable(sql);
+        }
+
+        public DataTable GetVentaxCodigo(Int32 CodVenta)
+        {
+            string sql = "select * from venta ";
+            sql = sql + " where CodVenta =" + CodVenta.ToString();
             return cDb.GetDatatable(sql);
         }
 
