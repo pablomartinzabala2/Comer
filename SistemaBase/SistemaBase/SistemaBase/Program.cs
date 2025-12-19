@@ -13,10 +13,10 @@ namespace SistemaBase
         /// </summary>
         [STAThread]
         static void Main()
-        {     
+        {      
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //  Application.Run(new FrmResumen());
+            //  Application.Run(new FrmAbmCliente());
             Application.Run(new FrmLogin());
         }
     }

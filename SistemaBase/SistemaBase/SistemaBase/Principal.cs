@@ -163,5 +163,11 @@ namespace SistemaBase
             FrmAbmMarca frm = new FrmAbmMarca();
             frm.Show();
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAbmCliente frm = new SistemaBase.FrmAbmCliente();
+            frm.Show();
+        }
     }
 }
